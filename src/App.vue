@@ -1,21 +1,25 @@
 <template>
 <div class="container">
 
-  <h1> Hello there </h1>
-  
+  <Header title="Task Tracker" />
+  <Button />
+ 
+
 </div>
  
 
 </template>
 
 <script>
-
+import Header from './components/header'
+import Button from './components/button'
 
 export default {
   name: 'App',
   components: {
-    
-  }
+    Header,
+    Button,
+  },
 }
 </script>
 
