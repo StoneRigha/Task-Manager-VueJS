@@ -15,6 +15,7 @@ import Task from './Task'
         },
         components:{
             Task,
-        }
+        },
+        emits:['delete-task']
     }
 </script>
