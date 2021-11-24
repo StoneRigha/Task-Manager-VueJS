@@ -2,7 +2,7 @@
 <div class="container">
 
   <Header title="Task Tracker" />
-  <Tasks :tasks="tasks" />
+  <Tasks @delete-task="deleteTask" :tasks="tasks" />
  
 
 </div>
@@ -25,6 +25,11 @@ export default {
       tasks: []
     }
   },
+  methods:{
+    deleteTask(id){
+      console.log('task', id)
+    }
+  },
   created(){
     this.tasks =[
       {
@@ -35,7 +40,7 @@ export default {
       },
       {
         id: 2,
-        text: 'Meeting at school',
+        text: 'Meeting at school',    
         day: '1st April 2022',
         reminder: 'true',
       },
@@ -43,7 +48,7 @@ export default {
         id: 3,
         text: 'Food Shopping',
         day: '10th April 2022',
-        reminder: 'true',
+        reminder: 'false',
       }
     ]
   }
