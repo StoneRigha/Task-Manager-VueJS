@@ -2,7 +2,7 @@
 <div class="container">
 
   <Header title="Task Tracker" />
-  <AddTask />
+  <AddTask @add-task="addTask"/>
   <Tasks @toogle-reminder="toggleReminder" 
   @delete-task="deleteTask" :tasks="tasks" />
  
@@ -26,18 +26,23 @@ export default {
   },
   data(){
     return{
-      tasks: []
+      tasks: [],
+      
     }
   },
   methods:{
+    addTask(task){
+      this.tasks = [...this.tasks, task]
+    },
     deleteTask(id){
       if(confirm('Are you sure you want to delete this task?')){
         this.tasks = this.tasks.filter((task)=> task.id !==id)
       } 
     },
     toggleReminder(id){
-      this.task=this.task.map((task)=> 
-      task.id === id ? {...task, reminder: !task.reminder} : task)
+      // this.tasks=this.tasks.map((task)=> 
+      // task.id === id ? {...task, reminder: !task.reminder} : tasks)
+      this.tasks = this.tasks.map((task)=> task.id === id ? {...task, reminder: !task.reminder} : task)
     }
   },
   created(){

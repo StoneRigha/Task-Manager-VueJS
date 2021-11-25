@@ -18,6 +18,6 @@ import Task from './Task'
         },
         emits:[
             'delete-task',
-            'toogle-reminder']
+            'toogle-reminder'],
     }
 </script>
