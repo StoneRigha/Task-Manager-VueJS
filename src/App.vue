@@ -4,7 +4,7 @@
   <Header @toggle-add-task="toggleAddTask" 
   title="Task Tracker" 
   :showAddTask="showAddTask" />
-  
+
   <div v-show="showAddTask">
     <AddTask @add-task="addTask"/>
   </div>
@@ -51,29 +51,17 @@ export default {
       // this.tasks=this.tasks.map((task)=> 
       // task.id === id ? {...task, reminder: !task.reminder} : tasks)
       this.tasks = this.tasks.map((task)=> task.id === id ? {...task, reminder: !task.reminder} : task)
-    }
+    },
+    async fetchTasks(){
+      const res = await fetch ('http://localhost:5000/tasks')
+
+      const data = await res.json()
+
+      return data
+    },
   },
-  created(){
-    this.tasks =[
-      {
-        id: 1,
-        text: 'Doctors appointment',
-        day: '22nd March 2022',
-        reminder: 'true',
-      },
-      {
-        id: 2,
-        text: 'Meeting at school',    
-        day: '1st April 2022',
-        reminder: 'true',
-      },
-      {
-        id: 3,
-        text: 'Food Shopping',
-        day: '10th April 2022',
-        reminder: 'false',
-      }
-    ]
+  async created(){
+    this.tasks = await this.fetchTasks()
   }
 }
 </script>
