@@ -13,7 +13,7 @@ export default {
     },
     methods:{
         onClick(){
-           this.$emit('toogle-add-task')
+           this.$emit('btn-click')
         }
     }
 }
